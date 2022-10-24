@@ -31,7 +31,7 @@ function scoresAverage(moviesArray) {
 function dramaMoviesScore(moviesArray) {
     const dramaMovies = moviesArray.filter(e5 => e5.genre.includes('Drama'));
     if (dramaMovies.length === 0) return 0;
-    let sum2 = moviesArray.reduce((valor2, e6) => valor2 + (e6.score || 0), 0);
+    let sum2 = dramaMovies.reduce((valor2, e6) => valor2 + (e6.score || 0), 0);
     return Math.round(sum2 / dramaMovies.length * 100) / 100
 }
 
