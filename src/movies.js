@@ -53,9 +53,9 @@ function orderAlphabetically(moviesArray) {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {
-    let minutos;
-    convert = [...moviesArray];
-        convert.forEach((e7) => {
+    let min;
+    let convert = [...moviesArray];
+    convert.forEach((e7) => {
             if (e7.duration[1] === "h"){
             min = 1 * (e7.duration[0] * 60);
             }
@@ -65,11 +65,31 @@ function turnHoursToMinutes(moviesArray) {
             if (e7.duration[5] === "m"){
                 min += 1 * ((e7.duration).substring(3, 5));
             }
-            e7.duration = min
+            e7.duration = min;
         })
     
         return convert;
     }
 
 // BONUS - Iteration 8: Best yearly score sum - Best yearly score sum
-function bestYearAvg(moviesArray) {};
+function bestYearAvg(moviesArray) {
+    if (moviesArray.length === 0) return null
+    let bestYearOfMovies = [{year: moviesArray.year, score: moviesArray.score}];
+    let judgeArray = [{year: "", score: "", divisor: 0}];
+    bestYearOfMovies.forEach (e8 => {
+        judgeArray.forEach (e9 => {
+            if (judgeArray.includes(e8.year) === "false"){
+                e9.push(e9.year = e8.year, e9.score = e8.score, e9.divisor = 1 );
+            }
+            if (e8.year === e9.year){
+                e9.score =+ e8.score;
+                e9.divisor = e9.divisor + 1;
+            }})
+    })  
+        
+
+    
+    judgeArray.sort((a, b) => b.score - a.score);
+
+    return ((judgeArray[0].score)/(judgeArray.divisor));
+}
